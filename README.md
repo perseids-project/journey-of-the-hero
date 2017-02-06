@@ -3,7 +3,9 @@ This is a frozen copy of the Perseids Journey of the Hero Prototype Code.
 The workflow used to produce the data and prototype are described in 
 
 https://github.com/perseids-project/perseids_docs/issues/329
+
 https://github.com/perseids-project/perseids_docs/issues/295
+
 https://github.com/perseids-project/perseids_docs/issues/212
 
 # Components
