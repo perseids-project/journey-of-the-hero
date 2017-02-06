@@ -1,0 +1,836 @@
+# Translations template for PROJECT.
+# Copyright (C) 2015 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2015-04-13 18:10+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+#: app/templates/alignment/enter.html:72
+msgid "Switch to prior version of this form"
+msgstr ""
+
+#: app/templates/alignment/enter.html:82
+msgid "Enter Metadata:"
+msgstr ""
+
+#: app/templates/alignment/enter.html:83
+msgid "Alignment title:"
+msgstr ""
+
+#: app/templates/alignment/enter.html:83
+msgid "alignmenttitlehint"
+msgstr ""
+
+#: app/templates/alignment/enter.html:84
+msgid "Enter a short title for your annotation"
+msgstr ""
+
+#: app/templates/alignment/enter.html:90
+msgid "Enter Text in Language 1:"
+msgstr ""
+
+#: app/templates/alignment/enter.html:92 app/templates/alignment/enter.html:124
+#: app/templates/treebank/enter.html:98
+msgid "Text Direction:"
+msgstr ""
+
+#: app/templates/alignment/enter.html:94 app/templates/alignment/enter.html:126
+#: app/templates/treebank/enter.html:100
+msgid "Left to Right"
+msgstr ""
+
+#: app/templates/alignment/enter.html:96 app/templates/alignment/enter.html:128
+#: app/templates/treebank/enter.html:102
+msgid "Right to Left"
+msgstr ""
+
+#: app/templates/alignment/enter.html:101
+#: app/templates/alignment/enter.html:118
+#: app/templates/alignment/enter.html:132
+#: app/templates/alignment/enter.html:148 app/templates/treebank/enter.html:65
+#: app/templates/treebank/enter.html:81
+msgid "Invalid entry"
+msgstr ""
+
+#: app/templates/alignment/enter.html:105
+#: app/templates/alignment/enter.html:135
+msgid "Search for a text:"
+msgstr ""
+
+#: app/templates/alignment/enter.html:106
+#: app/templates/alignment/enter.html:136
+msgid ""
+"URI Identifer for this text. If a URL, text will be loaded from there. "
+"Plain text only supported."
+msgstr ""
+
+#: app/templates/alignment/enter.html:109
+#: app/templates/alignment/enter.html:139
+msgid "Or enter your own text URI:"
+msgstr ""
+
+#: app/templates/alignment/enter.html:115
+#: app/templates/alignment/enter.html:145 app/templates/treebank/enter.html:78
+msgid "Select"
+msgstr ""
+
+#: app/templates/alignment/enter.html:122
+msgid "Enter Text in Language 2:"
+msgstr ""
+
+#: app/templates/alignment/enter.html:155
+msgid "Language 1:"
+msgstr ""
+
+#: app/templates/alignment/enter.html:157
+#: app/templates/alignment/enter.html:302
+msgid "English"
+msgstr ""
+
+#: app/templates/alignment/enter.html:158
+#: app/templates/alignment/enter.html:303 app/templates/treebank/enter.html:91
+msgid "Latin"
+msgstr ""
+
+#: app/templates/alignment/enter.html:159
+#: app/templates/alignment/enter.html:304
+msgid "Greek (Ancient -1453)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:160
+#: app/templates/alignment/enter.html:305 app/templates/treebank/enter.html:93
+msgid "Arabic"
+msgstr ""
+
+#: app/templates/alignment/enter.html:161
+#: app/templates/alignment/enter.html:306
+msgid "Chinese"
+msgstr ""
+
+#: app/templates/alignment/enter.html:162
+#: app/templates/alignment/enter.html:307
+msgid "Afrikaans"
+msgstr ""
+
+#: app/templates/alignment/enter.html:163
+#: app/templates/alignment/enter.html:308
+msgid "Akkadian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:164
+#: app/templates/alignment/enter.html:309
+msgid "Albanian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:165
+#: app/templates/alignment/enter.html:310
+msgid "Amharic"
+msgstr ""
+
+#: app/templates/alignment/enter.html:166
+#: app/templates/alignment/enter.html:311
+msgid "Aragonese"
+msgstr ""
+
+#: app/templates/alignment/enter.html:167
+#: app/templates/alignment/enter.html:312
+msgid "Aramaic (Imperial- 700 BC-300 BC)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:168
+#: app/templates/alignment/enter.html:313
+msgid "Aramaic (Samaritan)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:169
+#: app/templates/alignment/enter.html:314
+msgid "Armenian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:170
+#: app/templates/alignment/enter.html:315
+msgid "Asturian (Bable, Leonese)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:171
+#: app/templates/alignment/enter.html:316
+msgid "Avestan"
+msgstr ""
+
+#: app/templates/alignment/enter.html:172
+#: app/templates/alignment/enter.html:317
+msgid "Azerbaijani"
+msgstr ""
+
+#: app/templates/alignment/enter.html:173
+#: app/templates/alignment/enter.html:318
+msgid "Basque"
+msgstr ""
+
+#: app/templates/alignment/enter.html:174
+#: app/templates/alignment/enter.html:319
+msgid "Bengali"
+msgstr ""
+
+#: app/templates/alignment/enter.html:175
+#: app/templates/alignment/enter.html:320
+msgid "Berber"
+msgstr ""
+
+#: app/templates/alignment/enter.html:176
+#: app/templates/alignment/enter.html:321
+msgid "Bosnian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:177
+#: app/templates/alignment/enter.html:322
+msgid "Breton"
+msgstr ""
+
+#: app/templates/alignment/enter.html:178
+#: app/templates/alignment/enter.html:323
+msgid "Bulgarian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:179
+#: app/templates/alignment/enter.html:324
+msgid "Bulgarian (Old, Old Church Slavonic)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:180
+#: app/templates/alignment/enter.html:325
+msgid "Burmese"
+msgstr ""
+
+#: app/templates/alignment/enter.html:181
+#: app/templates/alignment/enter.html:326
+msgid "Catalan"
+msgstr ""
+
+#: app/templates/alignment/enter.html:182
+#: app/templates/alignment/enter.html:327
+msgid "Chagatai"
+msgstr ""
+
+#: app/templates/alignment/enter.html:183
+#: app/templates/alignment/enter.html:328
+msgid "Coptic"
+msgstr ""
+
+#: app/templates/alignment/enter.html:184
+#: app/templates/alignment/enter.html:329
+msgid "Cornish"
+msgstr ""
+
+#: app/templates/alignment/enter.html:185
+#: app/templates/alignment/enter.html:330
+msgid "Croatian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:186
+#: app/templates/alignment/enter.html:331
+msgid "Czech"
+msgstr ""
+
+#: app/templates/alignment/enter.html:187
+#: app/templates/alignment/enter.html:332
+msgid "Danish"
+msgstr ""
+
+#: app/templates/alignment/enter.html:188
+#: app/templates/alignment/enter.html:333
+msgid "Dutch (Flemish)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:189
+#: app/templates/alignment/enter.html:334
+msgid "Dutch (Middle, 1050-1350)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:190
+#: app/templates/alignment/enter.html:335
+msgid "Egyptian (Ancient)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:191
+#: app/templates/alignment/enter.html:336
+msgid "Elamite"
+msgstr ""
+
+#: app/templates/alignment/enter.html:192
+#: app/templates/alignment/enter.html:337
+msgid "English (Middle, 1100-1500)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:193
+#: app/templates/alignment/enter.html:338
+msgid "English (Old, 450-1100)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:194
+#: app/templates/alignment/enter.html:339
+msgid "Estonian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:195
+#: app/templates/alignment/enter.html:340
+msgid "Finnish"
+msgstr ""
+
+#: app/templates/alignment/enter.html:196
+#: app/templates/alignment/enter.html:341
+msgid "French"
+msgstr ""
+
+#: app/templates/alignment/enter.html:197
+#: app/templates/alignment/enter.html:342
+msgid "French (Middle, 1400-1600)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:198
+msgid "French (Old, 842c. 1400)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:199
+#: app/templates/alignment/enter.html:344
+msgid "Ge'ez"
+msgstr ""
+
+#: app/templates/alignment/enter.html:200
+#: app/templates/alignment/enter.html:345
+msgid "Georgian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:201
+#: app/templates/alignment/enter.html:346
+msgid "German (Low, Low Saxon)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:202
+#: app/templates/alignment/enter.html:347
+msgid "German (Middle-High, 1050-1500)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:203
+#: app/templates/alignment/enter.html:348
+msgid "German (Old-High, 750-1050)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:204
+#: app/templates/alignment/enter.html:349
+msgid "German"
+msgstr ""
+
+#: app/templates/alignment/enter.html:205
+#: app/templates/alignment/enter.html:350
+msgid "Gothic"
+msgstr ""
+
+#: app/templates/alignment/enter.html:206
+#: app/templates/alignment/enter.html:351
+msgid "Greek (Modern, 1453-)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:207
+#: app/templates/alignment/enter.html:352
+msgid "Gujarati"
+msgstr ""
+
+#: app/templates/alignment/enter.html:208
+#: app/templates/alignment/enter.html:353
+msgid "Hebrew"
+msgstr ""
+
+#: app/templates/alignment/enter.html:209
+#: app/templates/alignment/enter.html:354
+msgid "Hindi"
+msgstr ""
+
+#: app/templates/alignment/enter.html:210
+#: app/templates/alignment/enter.html:355
+msgid "Hittite"
+msgstr ""
+
+#: app/templates/alignment/enter.html:211
+#: app/templates/alignment/enter.html:356
+msgid "Hungarian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:212
+#: app/templates/alignment/enter.html:357
+msgid "Icelandic"
+msgstr ""
+
+#: app/templates/alignment/enter.html:213
+#: app/templates/alignment/enter.html:358
+msgid "Indonesian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:214
+#: app/templates/alignment/enter.html:359
+msgid "Irish (Modern)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:215
+#: app/templates/alignment/enter.html:360
+msgid "Irish (Middle 900-1200)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:216
+#: app/templates/alignment/enter.html:361
+msgid "Irish (Old, to 900)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:217
+#: app/templates/alignment/enter.html:362
+msgid "Italian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:218
+#: app/templates/alignment/enter.html:363
+msgid "Japanese"
+msgstr ""
+
+#: app/templates/alignment/enter.html:219
+#: app/templates/alignment/enter.html:364
+msgid "Javanese"
+msgstr ""
+
+#: app/templates/alignment/enter.html:220
+#: app/templates/alignment/enter.html:365
+msgid "Kannada"
+msgstr ""
+
+#: app/templates/alignment/enter.html:221
+#: app/templates/alignment/enter.html:366
+msgid "Khmer (Central)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:222
+#: app/templates/alignment/enter.html:367
+msgid "Korean"
+msgstr ""
+
+#: app/templates/alignment/enter.html:223
+#: app/templates/alignment/enter.html:368
+msgid "Kurdish"
+msgstr ""
+
+#: app/templates/alignment/enter.html:224
+#: app/templates/alignment/enter.html:369
+msgid "Ladino"
+msgstr ""
+
+#: app/templates/alignment/enter.html:225
+#: app/templates/alignment/enter.html:370
+msgid "Lithuanian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:226
+#: app/templates/alignment/enter.html:371
+msgid "Malay"
+msgstr ""
+
+#: app/templates/alignment/enter.html:227
+#: app/templates/alignment/enter.html:372
+msgid "Marathi"
+msgstr ""
+
+#: app/templates/alignment/enter.html:228
+#: app/templates/alignment/enter.html:373
+msgid "Nepal Bhasa (Newari)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:229
+#: app/templates/alignment/enter.html:374
+msgid "Nepali"
+msgstr ""
+
+#: app/templates/alignment/enter.html:230
+#: app/templates/alignment/enter.html:375
+msgid "Newari (Classical)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:231
+#: app/templates/alignment/enter.html:376
+msgid "Norse (Old)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:232
+#: app/templates/alignment/enter.html:377
+msgid "Norwegian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:233
+#: app/templates/alignment/enter.html:378
+msgid "Norwegian (Bokmål)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:234
+#: app/templates/alignment/enter.html:379
+msgid "Norwegian (Nynorsk)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:235
+#: app/templates/alignment/enter.html:380
+msgid "Ossetian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:236
+#: app/templates/alignment/enter.html:381
+msgid "Pahlavi (Middle Persian)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:237
+#: app/templates/alignment/enter.html:382
+msgid "Pali"
+msgstr ""
+
+#: app/templates/alignment/enter.html:238
+#: app/templates/alignment/enter.html:383
+msgid "Pashto"
+msgstr ""
+
+#: app/templates/alignment/enter.html:239
+#: app/templates/alignment/enter.html:384
+msgid "Persian (Farsi)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:240
+#: app/templates/alignment/enter.html:385
+msgid "Persian (Old, 600-400 BC)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:241
+#: app/templates/alignment/enter.html:386
+msgid "Phoenician"
+msgstr ""
+
+#: app/templates/alignment/enter.html:242
+#: app/templates/alignment/enter.html:387
+msgid "Polish"
+msgstr ""
+
+#: app/templates/alignment/enter.html:243
+#: app/templates/alignment/enter.html:388
+msgid "Portuguese"
+msgstr ""
+
+#: app/templates/alignment/enter.html:244
+#: app/templates/alignment/enter.html:389
+msgid "Prakrit"
+msgstr ""
+
+#: app/templates/alignment/enter.html:245
+#: app/templates/alignment/enter.html:390
+msgid "Provençal (Occitan, -1500)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:246
+#: app/templates/alignment/enter.html:391
+msgid "Punjabi (Panjabi)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:247
+#: app/templates/alignment/enter.html:392
+msgid "Rajasthani"
+msgstr ""
+
+#: app/templates/alignment/enter.html:248
+#: app/templates/alignment/enter.html:393
+msgid "Romanian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:249
+#: app/templates/alignment/enter.html:394
+msgid "Romany"
+msgstr ""
+
+#: app/templates/alignment/enter.html:250
+#: app/templates/alignment/enter.html:395
+msgid "Russian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:251
+#: app/templates/alignment/enter.html:396
+msgid "Sanskrit"
+msgstr ""
+
+#: app/templates/alignment/enter.html:252
+#: app/templates/alignment/enter.html:397
+msgid "Scots"
+msgstr ""
+
+#: app/templates/alignment/enter.html:253
+#: app/templates/alignment/enter.html:398
+msgid "Scottish (Gaelic)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:254
+#: app/templates/alignment/enter.html:399
+msgid "Serbian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:255
+#: app/templates/alignment/enter.html:400
+msgid "Sicilian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:256
+#: app/templates/alignment/enter.html:401
+msgid "Sindhi"
+msgstr ""
+
+#: app/templates/alignment/enter.html:257
+#: app/templates/alignment/enter.html:402
+msgid "Sinhalese (Sinhala)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:258
+#: app/templates/alignment/enter.html:403
+msgid "Slovak"
+msgstr ""
+
+#: app/templates/alignment/enter.html:259
+#: app/templates/alignment/enter.html:404
+msgid "Slovenian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:260
+#: app/templates/alignment/enter.html:405
+msgid "Sogdian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:261
+#: app/templates/alignment/enter.html:406
+msgid "Spanish (Castilian)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:262
+#: app/templates/alignment/enter.html:407
+msgid "Sumerian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:263
+#: app/templates/alignment/enter.html:408
+msgid "Swahili"
+msgstr ""
+
+#: app/templates/alignment/enter.html:264
+#: app/templates/alignment/enter.html:409
+msgid "Swedish"
+msgstr ""
+
+#: app/templates/alignment/enter.html:265
+#: app/templates/alignment/enter.html:410
+msgid "Swiss German (Alsatian)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:266
+#: app/templates/alignment/enter.html:411
+msgid "Syriac (Classical)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:267
+#: app/templates/alignment/enter.html:412
+msgid "Syriac (Northeastern, Neo-Aramaic)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:268
+#: app/templates/alignment/enter.html:413
+msgid "Tagalog"
+msgstr ""
+
+#: app/templates/alignment/enter.html:269
+#: app/templates/alignment/enter.html:414
+msgid "Tajik"
+msgstr ""
+
+#: app/templates/alignment/enter.html:270
+#: app/templates/alignment/enter.html:415
+msgid "Tamil"
+msgstr ""
+
+#: app/templates/alignment/enter.html:271
+#: app/templates/alignment/enter.html:416
+msgid "Tatar"
+msgstr ""
+
+#: app/templates/alignment/enter.html:272
+#: app/templates/alignment/enter.html:417
+msgid "Telugu"
+msgstr ""
+
+#: app/templates/alignment/enter.html:273
+#: app/templates/alignment/enter.html:418
+msgid "Thai"
+msgstr ""
+
+#: app/templates/alignment/enter.html:274
+#: app/templates/alignment/enter.html:419
+msgid "Tibetan"
+msgstr ""
+
+#: app/templates/alignment/enter.html:275
+#: app/templates/alignment/enter.html:420
+msgid "Turkish (Modern)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:276
+#: app/templates/alignment/enter.html:421
+msgid "Turkish (Ottoman, 1500-1928 )"
+msgstr ""
+
+#: app/templates/alignment/enter.html:277
+#: app/templates/alignment/enter.html:422
+msgid "Turkmen"
+msgstr ""
+
+#: app/templates/alignment/enter.html:278
+#: app/templates/alignment/enter.html:423
+msgid "Ugaritic"
+msgstr ""
+
+#: app/templates/alignment/enter.html:279
+#: app/templates/alignment/enter.html:424
+msgid "Ukainian"
+msgstr ""
+
+#: app/templates/alignment/enter.html:280
+#: app/templates/alignment/enter.html:425
+msgid "Urdu"
+msgstr ""
+
+#: app/templates/alignment/enter.html:281
+#: app/templates/alignment/enter.html:426
+msgid "Uzbek"
+msgstr ""
+
+#: app/templates/alignment/enter.html:282
+#: app/templates/alignment/enter.html:427
+msgid "Vietnamese"
+msgstr ""
+
+#: app/templates/alignment/enter.html:283
+#: app/templates/alignment/enter.html:428
+msgid "Walloon"
+msgstr ""
+
+#: app/templates/alignment/enter.html:284
+#: app/templates/alignment/enter.html:429
+msgid "Welsh"
+msgstr ""
+
+#: app/templates/alignment/enter.html:285
+#: app/templates/alignment/enter.html:430
+msgid "Yiddish"
+msgstr ""
+
+#: app/templates/alignment/enter.html:289
+#: app/templates/alignment/enter.html:434
+msgid "Other*:"
+msgstr ""
+
+#: app/templates/alignment/enter.html:294
+#: app/templates/alignment/enter.html:439 app/templates/treebank/enter.html:112
+msgid "Click  to toggle advanced options..."
+msgstr ""
+
+#: app/templates/alignment/enter.html:300
+msgid "Language 2:"
+msgstr ""
+
+#: app/templates/alignment/enter.html:343
+msgid "French (Old, 842-c. 1400)"
+msgstr ""
+
+#: app/templates/alignment/enter.html:444
+msgid ""
+"*Please use ISO 639-2 or ISO 639-3 three-letter codes for any other "
+"languages"
+msgstr ""
+
+#: app/templates/alignment/enter.html:448
+msgid "Align"
+msgstr ""
+
+#: app/templates/treebank/enter.html:62
+msgid "Input text:"
+msgstr ""
+
+#: app/templates/treebank/enter.html:64
+msgid "Enter the text you want to treebank..."
+msgstr ""
+
+#: app/templates/treebank/enter.html:67
+msgid "Search for a text"
+msgstr ""
+
+#: app/templates/treebank/enter.html:72
+msgid "Enter your own text URI :"
+msgstr ""
+
+#: app/templates/treebank/enter.html:87
+msgid "Language:"
+msgstr ""
+
+#: app/templates/treebank/enter.html:89
+msgid "Greek"
+msgstr ""
+
+#: app/templates/treebank/enter.html:95
+msgid "Other"
+msgstr ""
+
+#: app/templates/treebank/enter.html:110
+msgid "Edit"
+msgstr ""
+
+#: app/templates/treebank/enter.html:117
+msgid "Ancient Language Dependency Treebank"
+msgstr ""
+
+#: app/templates/treebank/enter.html:123
+msgid "Smyth Grammar Tag Set"
+msgstr ""
+
+#: app/templates/treebank/enter.html:129
+msgid "ALDT (Without Morphology)"
+msgstr ""
+
+#: app/templates/treebank/enter.html:136
+msgid "Attach unannotated tokens to root:"
+msgstr ""
+
+#: app/templates/treebank/enter.html:148
+msgid "Or Upload Base XML Treebank"
+msgstr ""
+
+#: app/templates/treebank/enter.html:151
+msgid "From file:"
+msgstr ""
+
+#: app/templates/treebank/enter.html:157
+msgid "From URL:"
+msgstr ""
+
+#: app/templates/treebank/enter.html:160
+msgid "supply the url of the treebank template"
+msgstr ""
+
+#: app/templates/treebank/enter.html:163
+msgid "Create Link"
+msgstr ""
+

@@ -1,0 +1,552 @@
+
+//@import "bootstrap.less";
+@import "dependencies.less";
+
+// ---------------------------------------------------
+// Settings
+// ---------------------------------------------------
+
+// colors
+@discreet-text: #999;
+
+// top view dimensions
+@header-height: 30px;
+@footer-height: 35px;
+
+@view-padding-top: 20px;
+@view-padding-bottom: 25px;
+@view-padding-right: 15px;
+@view-padding-left: 15px;
+
+@view-margin-top: @header-height + 10;
+@view-margin-bottom: @footer-height + @view-padding-bottom;
+@view-margin-right: 20px;
+@view-margin-left: 20px;
+
+// ---------------------------------------------------
+// Basic elements
+// ---------------------------------------------------
+html, body {
+    overflow: hidden;
+}
+h1, h2, h3, h4 {
+    color: #555;
+    margin: 0px;
+}
+h1, h4 {
+    font-style: italic;
+}
+p {
+    font-family: @serifFontFamily;
+}
+
+// ---------------------------------------------------
+// Header and Footer
+// ---------------------------------------------------
+header {
+    padding: 10px @view-margin-right 0 @view-margin-left;
+    height: @header-height;
+
+    h1 {
+        margin: 0;
+        float: left;
+        
+        span.beta {
+            font-style: normal;
+            font-weight: normal;
+            font-size: .5em;
+            color: @discreet-text;
+        }
+        
+        a:link, a:visited {
+            color: @linkColor;
+            text-decoration: none;
+        }
+      /*  
+        font-family: Georgia,"Times New Roman",Times,serif;
+        
+        font-weight: bold;
+        font-size: 24px; */
+    }
+    
+    nav {
+        margin: .4em 2em;
+        float: left;
+        font-weight: bold;
+        a {
+        	font-size: @font-size-small;
+        }
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    padding: 10px 20px;
+    font-size: .8em;
+    color: @discreet-text;
+    
+    a:link, a:visited { color: @discreet-text; }
+}
+
+// ---------------------------------------------------
+// Grid system
+// ---------------------------------------------------
+.row-fluid {
+	.make-row();
+}
+.span7 {
+	.make-lg-column(7);
+}
+.span5 {
+	.make-lg-column(5);
+}
+
+// ---------------------------------------------------
+// Layout styles
+// ---------------------------------------------------
+
+.top {
+    position: absolute;
+    background: #eee;
+    top: @view-margin-top;
+    // width & height set with JS
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 0 @view-margin-right 0 @view-margin-left;
+    
+    &.loading * {
+        display: none;
+    }
+    
+    // fix for google maps controls
+    img { max-width: none; }
+}
+
+.layout {
+    position: absolute;
+    top: @view-padding-top;
+    bottom: @view-padding-bottom;
+    left: @view-padding-left;
+    right: @view-padding-right;
+    
+    .row-fluid > div {
+        position: relative;
+    }
+    
+    .full-height {
+        height: 100%;
+    }
+    
+    .fill {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        // height set with JS
+    }
+}
+
+// layout-specific styles
+
+.layout-full-top {
+    .bottom-slot {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 1.5em;
+    }
+}
+
+
+// ---------------------------------------------------
+// Utility styles
+// ---------------------------------------------------
+
+// slide transitions
+.top, .single-page {
+    &.sliding {
+        .transition(.6s ease-in-out left);
+    }
+    &.active {
+        left: 0;
+        &.left {
+            left: -100%;
+        }
+        &.right {
+            left: 100%;
+        }
+    }
+    &.next {
+        left: 100%;
+    }
+    &.prev {
+        left: -100%;
+    }
+    &.next.left, &.prev.right {
+        left: 0;
+    }
+}
+
+// loading spinner
+.loading {
+    background-image: url(images/blue-loading.gif);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    min-height: 80px;
+}
+
+.panel {
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    
+    &.padded-scroll {
+        overflow: auto;
+        
+        > div {
+            margin: 1.5em 1em;
+        }
+    }
+}
+
+.control {
+    color: #999;
+    cursor: default;
+    
+    &.on {
+        color: @linkColor;
+        cursor: pointer;
+        
+        &:hover {
+            color: @linkColorHover;
+        }
+    }
+}
+
+// image thumbnails
+.thumbs {
+    width: 100px;
+    margin-left: 1em;
+    float: right;
+    
+    img {
+        margin-bottom: 1em;
+    }
+}
+
+.padding { 
+    padding: 1em; 
+}
+
+.place {
+    color: @linkColor;
+    cursor: pointer;
+    font-weight: bold;
+    
+    &:hover {
+        color: @linkColorHover;
+    }
+    
+    &.hi {
+        background: yellow;
+    }
+}
+
+// For image replacement
+.ir { 
+    display: block; 
+    border: 0; 
+    text-indent: -999em; 
+    overflow: hidden;
+}
+
+
+// ---------------------------------------------------
+// View-specific slot styles
+// ---------------------------------------------------
+
+// index page book list
+.index-overview-template {
+    overflow: auto;
+    height: 100%;
+}
+
+// summary page map view
+.summary-map-view, .place-map-view {
+    width: 100%;
+    overflow: auto;
+    
+    > div {
+        height: 100%;
+    }
+}
+
+// place frequency bars view
+.freq-bars-view {
+    text.title {
+        text-anchor: end;
+        font-size: 11px;
+        cursor: pointer;
+    }
+    font-size: 12px;
+}
+
+.frequency-legend-view {
+    text-align: right;
+    
+    img {
+        margin: 0 5px 3px 5px;
+    }
+}
+
+// navigation bar for book layouts
+.navigation-view {
+    float: right;
+    width: 410px;
+    margin-left: 20px;
+    text-align: right;
+    
+    nav, a {
+        display: inline-block;
+    }
+    
+    a {
+        vertical-align: top;
+        font-size: @font-size-smaller;
+    }
+    
+    button {
+        font-weight: bold;
+        font-size: @font-size-smaller;
+        font-family: 'Lucida Grande';
+    }
+}
+
+// book title view
+.book-title-view {
+    h2 { margin: 0;
+        &.on { cursor: pointer; }
+    }
+    p { margin-top: 0; }
+}
+
+// page control buttons
+.nextprev{
+    float: right;
+    
+    .page-id {
+        width: 3.5em;
+        text-align: center;
+        font-family: Georgia, Garamond, serif;
+        font-variant: lining-nums;
+    }
+}
+
+// timemap view
+.timemap-view {
+    .timeline-container{
+        position: relative;
+        height: 35%;
+        width: 100%;
+    }
+    .timeline{
+        font-size: 12px;
+        height: 100%;
+        width: 100%;
+        background: #CCCCCC;
+    }
+    .map-container {
+        width: 100%;
+        height: 65%;
+    }
+    .map {
+        width: 100%;
+        height: 100%;
+        background: #EEEEEE;
+    }
+}
+
+// single page view
+.single-page {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+/*    padding: 1.5em 12px; */
+    padding: 0.5em 12px; 
+    display: none;
+    overflow: auto;
+    font-size: 1.2em;
+    font-family: @serifFontFamily;
+
+    .img {
+        display: none;
+        
+        img {
+            width: 100%;
+        }
+    }
+    
+}
+
+// page summary view
+.place-summary {
+    font-family: @serifFontFamily;
+    
+    p {
+        margin: 0 0 .5em 0;
+    }
+    h4 {
+        margin: 1.5em 0 .5em 0;
+    }
+    h3 {
+        margin: 0 0 .5em 0;
+    }
+}
+.related-places-view, .book-refs-view {
+    h4 {
+        margin-top: 0;
+    }
+}
+.related-places-view p {
+    font-size: .88em;
+}
+
+// flickr photos
+.place-flickr-view {
+    > div {
+        padding: 10px;
+    }
+    h4 {
+        margin: 0 0 5px 0;
+        display: inline-block;
+    }
+    .flickr-link {
+        display: none;
+    }
+    .photos {
+        width: 100%;
+        height: 85px;
+        overflow: hidden;
+    }
+    .flickr-photo {
+        float: left;
+        margin: 0 10px 10px 0;
+    }
+}
+.place-view-right.layout-full-top .bottom-slot {
+    height: 130px;
+}
+
+// message view
+#message-view {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    display: none;
+    
+    .alert {
+        padding: .3em 35px .3em 14px;
+        display: inline-block;
+        margin-top: .5em;
+    }
+}
+
+// edit reference form
+#change-this-link {
+    position: absolute;
+    display: none;
+}
+#change-this-form {
+    display: none;
+    
+    textarea {
+        width: 100%;
+    }
+    label {
+        display: block;
+        font-weight: bold;
+        margin: .5em 0;
+    }
+    .ref {
+        font-style: italic;
+    }
+}
+
+// timeline play/pause controls
+.timeline-controls {
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+    background: #ccc;
+    width: 25px;
+    height: 50px;
+    div {
+        width: 16px;
+        height: 16px;
+        margin: 5px;
+        background-color: #999;
+        background-repeat: none;
+        
+        &.on {
+            background-color: @linkColor;
+            cursor: pointer;
+        }
+        &.timeline-play {
+            background-image: url(images/play.png);
+        }
+        &.timeline-stop {
+            background-image: url(images/stop.png);
+        }
+    }
+}
+div.timeline-event-label {
+    margin: 3px 0px 0px 3px;
+}
+
+// info window styles
+.infowindow {
+    height: 8em;
+    width: 280px;
+    
+    h3 {
+        margin: 0 0 1em 0;
+    }
+    p {
+        margin: 0 0 1em 0;
+    }
+    span.zoom {
+        font-size: .6em;
+    }
+    .pagenum {
+        color: #999;
+        font-style: italic;
+    }
+}
+
+
+// ---------------------------------------------------
+// Editing interface styles
+// ---------------------------------------------------
+
+.flag-edit-view {
+    form {
+        margin: 1em 0;
+        width: inherit;
+        background: whiteSmoke;
+        overflow-x: hidden;
+        overflow-y: auto;
+        
+        > fieldset {
+            padding: 1em;
+        }
+    }
+    label.checkbox.toggle {
+        font-style: italic;
+        color: #999;
+    }
+    .panel.padded-scroll {
+        max-height: 10em;
+    }
+}

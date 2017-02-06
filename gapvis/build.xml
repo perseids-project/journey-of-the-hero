@@ -1,0 +1,545 @@
+<?xml version="1.0"?>
+<project name="gapvis" default="build-dev">
+    <tstamp>
+        <format property="build.time" pattern="yyddmmhhmmss" />
+    </tstamp>
+    
+    <!-- define ant-contrib tasks -->
+    
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+            <pathelement location="/usr/local/Cellar/ant-contrib/1.0b3/libexec/ant-contrib-1.0b3.jar"/>
+        </classpath>
+    </taskdef>
+    
+    <!-- get custom properties.
+    You can override the default configuration settings with your own by running:
+    ant -Dconfig.file=path/to/my.config.properties
+    -->
+    
+    <property file="${config.file}" />
+    
+    <!-- get core properties -->
+    
+    <property name="config.dir" value="config" />
+    <property file="${config.dir}/build.properties" />
+    
+    <property name="build.dir" value="build" />
+    <property name="target.dir" value="." />
+ 
+    <!-- Build Targets -->
+    
+    <target name="build-dev">
+    <property name="index.template" value="index.tmpl.html" />
+        <property name="js.settings" value="${js.settings.dev}"/>
+        <ant target="-start-build-dev"/>
+    </target>
+    
+    <target name="build-production">
+      <property name="index.template" value="index.tmpl.html" />
+        <property name="js.settings" value="${js.settings.production}"/>
+        <ant target="-start-build-production"/>
+    </target>
+    
+    <target name="build-hestia">
+      <property name="index.template" value="index.hestia.tmpl.html" />
+        <property name="js.settings" value="${js.settings.hestia}"/>
+        <ant target="-start-build-production"/>
+    </target>
+                     
+    <target name="build-production-test">
+        <property name="index.file" value="index.html" />
+        <property name="js.settings" value="${js.settings.dev}"/>
+        <ant target="-start-build-production"/>
+    </target>
+    
+    <target name="build-dev-local">
+        <property name="locallibs" value="true"/>
+        <ant target="build-dev"/>
+    </target>
+    
+    <!-- Private build targets -->
+    
+    <target name="-build-dev"
+            depends="clean-build,
+                     start-build,
+                     build-js, 
+                     build-css,
+                     build-templates,
+                     finish-build"/>
+            
+    <target name="-build-production"
+            depends="clean-build,
+                     start-build,
+                     concat-libs-js,
+                     optimize-require,
+                     build-js,
+                     build-css,
+                     build-templates,
+                     build-analytics,
+                     compress-html,
+                     finish-build"/>
+                     
+    <!-- Settings for builds -->
+    
+    <target name="-start-build-settings">
+    
+        <property name="index.build" value="${build.dir}/${index.file}" />
+        <property name="index.target" value="${target.dir}/${index.file}" />
+        
+        <property name="js.cts" value="node_modules/capitains-sparrow/build/cts.js" />
+        
+        <property name="js.concat" value="scripts-${app.file.prefix}${build.time}.js" />
+        <property name="js.concat.build" value="${build.dir}/${js.concat}" />
+        <property name="js.concat.target" value="${target.dir}/${js.concat}" />
+        <property name="js.rjs.target" value="${build.dir}/rjs_modules.js" />
+        
+        <property name="css.concat" value="styles-${app.file.prefix}${build.time}.css" />
+        <property name="css.concat.build" value="${build.dir}/${css.concat}" />
+        <property name="css.concat.target" value="${target.dir}/${css.concat}" />
+        
+        <pathconvert property="js.app.templates.files" pathsep="," dirsep="/">
+            <fileset dir="${js.app.templates.dir}" excludes="*edit-*"/>
+            <fileset dir="${js.app.layouts.dir}" excludes="*edit-*"/>
+        </pathconvert>
+        
+    </target>
+    
+    <!-- Set properties for Dev build -->
+    <target name="-start-build-dev" depends="-start-build-settings">
+        <condition property="js.lib.remote" value="${js.lib.local}" else="${js.lib.nomunge}">
+            <isset property="locallibs"/>
+        </condition>
+        
+        <property name="js.insert.files" 
+                  value="${js.settings.dev},
+                         ${js.lib.remote}, 
+                         ${js.lib.dev},
+                         ${js.libext},
+                         ${js.app.init}" />
+        <property name="css.less.files" value="${css.app}"/>
+        <property name="css.files" value="${css.concat.target}"/>
+        <ant target="-build-dev"/>
+    </target>
+    
+    <!-- Set properties for Production build -->
+    
+    <target name="-start-build-production" depends="-start-build-settings">
+      
+        <!-- Note: js.lib.production.min is already added in concat-libs-js -->
+        
+        <property name="js.uglify.files" 
+                  value="${js.lib.production.uglify},
+                         ${js.libext},
+                         ${js.rjs.target},
+                         ${js.app.init}"/>
+        <property name="js.insert.files" 
+                  value="${js.settings},
+                         ${js.lib.nomunge},
+                         ${js.concat.target}" />
+        <property name="js.uglify.compress" value="true"/>
+        <property name="css.less.compress" value="true"/>
+        <property name="css.less.files" value="${css.app}"/>
+        <property name="css.files" value="${css.concat.target}"/>
+        <ant target="-build-production"/>
+    </target>
+            
+    <!-- Shared Targets -->
+    
+    <target name="start-build">
+        <mkdir dir="${build.dir}"/>
+        <copy file="${index.template}" tofile="${index.build}"/>
+    </target>
+    
+    <target name="finish-build">
+        <copy file="${index.build}" tofile="${index.target}"/>
+        <delete dir="${build.dir}" />
+    </target>
+    
+    <target name="clean-build">
+        <delete file="${index.target}"/>
+        <delete>
+            <fileset dir="." includes="scripts-${app.file.prefix}*.js"/>
+        </delete>
+        <delete>
+            <fileset dir="." includes="styles-${app.file.prefix}*.css"/>
+        </delete>
+    </target>
+    
+    <!-- CSS Targets -->
+    
+    <target name="build-css" depends="-less-concat-css">
+        <echo>Creating tags for CSS files</echo>
+        
+        <!-- Put in css files -->
+        
+        <for list="${css.files}" param="file.url" trim="true">
+            <sequential>
+                <replace file="${index.build}" 
+                    token="${placeholder.css}"
+                    value="&lt;link rel=&quot;stylesheet&quot; href=&quot;@{file.url}&quot;&gt;${placeholder.css}"/>
+            </sequential>
+        </for>
+        
+        <!-- Clean up placeholder -->
+        
+        <replace file="${index.build}" token="${placeholder.css}" value=""/>
+    </target>
+    
+    <target name="-less-concat-css">
+        <echo>Less-ifying and concatenating CSS files</echo>
+        <condition property="css.compress.argument" value="--yui-compress" else="">
+            <isset property="css.less.compress"/>
+        </condition>
+        <for list="${css.less.files}" param="file" trim="true">
+            <sequential>
+                <echo>Less-ifying @{file}</echo>
+                
+                <!-- compress -->
+                
+                <exec executable="${lessc}" failonerror="true">
+                    <arg line="${css.compress.argument}"/>
+                    <arg line="--verbose"/>
+                    <arg line="@{file} @{file}.min.tmp"/>
+                </exec>
+                
+                <!-- add to file -->
+                
+                <echo>Add to ${css.concat.build}</echo>
+                <concat destfile="${css.concat.build}" append="yes">
+                    <fileset file="@{file}.min.tmp"/>
+                </concat>
+                
+                <!-- clean up -->
+                
+                <delete file="@{file}.min.tmp"/>
+            </sequential>
+        </for>
+        
+        <!-- move build to target -->
+        
+        <copy file="${css.concat.build}" tofile="${css.concat.target}"/>
+    </target>
+    
+    <!-- JS Targets -->
+    
+    <target name="build-js" depends="-uglify-concat-js">
+        <echo>Creating tags for JS files</echo>
+        
+        <!-- Put in script files -->
+        
+        <for list="${js.insert.files}" param="file.url" trim="true">
+            <sequential>
+                <replace file="${index.build}" 
+                    token="${placeholder.js}"
+                    value="&lt;script type=&quot;text/javascript&quot; src=&quot;@{file.url}&quot;&gt;&lt;/script&gt;${placeholder.js}"/>
+            </sequential>
+        </for>
+        
+        <!-- Clean up placeholder -->
+        
+        <replace file="${index.build}" token="${placeholder.js}" value=""/>
+    </target>
+    
+    <target name="-uglify-concat-js" if="js.uglify.files">
+        <echo>Minifying and concatenating JS files</echo>
+        
+        <!-- Compress and add extensions and apps -->
+        
+        <condition property="js.compress.argument" value="-nc" else="-ns -b">
+            <isset property="js.uglify.compress"/>
+        </condition>
+        <for list="${js.uglify.files}" param="file" trim="true">
+      <sequential>
+        <echo>- @{file}</echo>
+      </sequential>
+    </for>
+        <for list="${js.uglify.files}" param="file" trim="true">
+            <sequential>
+        
+                <!--
+        <echo>Compressing @{file}</echo>
+                <exec executable="${uglify.js}" failonerror="true">
+                    <!- - arg line="- -define-from-module &quot;${basedir}/${js.settings}&quot;"/ - - >
+                    <arg line="${js.compress.argument}"/>
+                    <arg line="@{file} > @{file}.min.tmp"/>
+                </exec> 
+        <concat destfile="${js.concat.build}" append="yes">
+                    <fileset file="@{file}.min.tmp"/>
+                </concat>
+                <delete file="@{file}.min.tmp"/>  
+        -->
+                <echo>(Not!) Compressing @{file}</echo>
+                
+                <!-- add to file -->
+                
+        <concat destfile="${js.concat.build}" append="yes">
+                    <fileset file="@{file}"/>
+                </concat>
+            </sequential>
+        </for>
+        
+        <!-- Move script file to production -->
+        
+        <copy file="${js.concat.build}" tofile="${js.concat.target}"/>
+    </target>
+    
+    <!-- Template Targets -->
+    
+    <target name="build-templates">
+        <echo>Inserting template code</echo>
+        
+        <!-- Put in template files -->
+        
+        <for list="${js.app.templates.files}" param="file" trim="true">
+            <sequential>
+              
+                <!-- Get file contents and name -->
+                
+                <local name="template.contents"/>
+                <loadfile property="template.contents" srcFile="@{file}"/>
+                <local name="template.id"/>
+                <basename property="template.id" file="@{file}" suffix=".html"/>
+                
+                <!-- insert at placeholder -->
+                
+                <replace file="${index.build}" 
+                    token="${placeholder.templates}"
+                    value="&lt;script type=&quot;text/template&quot; id=&quot;${template.id}&quot;&gt;${template.contents}&lt;/script&gt;${placeholder.templates}"/>
+            </sequential>
+        </for>
+        
+        <!-- Clean up placeholder -->
+        
+        <replace file="${index.build}" token="${placeholder.templates}" value=""/>
+    </target>
+    
+    <!-- Production Targets -->
+    
+    <target name="concat-libs-js">
+        <echo>Add JS libraries</echo>
+        
+        <!-- Add compressed libs -->
+        
+        <for list="${js.lib.production.min}" param="file" trim="true">
+            <sequential>
+                <echo>Adding @{file} to ${js.concat.build}</echo>
+                
+                <!-- add to file -->
+                
+                <concat destfile="${js.concat.build}" append="yes">
+                    <fileset file="@{file}"/>
+                </concat>
+            </sequential>
+        </for>
+    </target>
+    
+    <target name="build-analytics">
+        <echo>Inserting Google Analytics code</echo>
+        
+        <!-- Get file contents and name -->
+        
+        <loadfile property="template.contents" srcFile="analytics.html"/>
+        
+        <!-- insert at placeholder -->
+        
+        <replace file="${index.build}" 
+            token="${placeholder.analytics}"
+            value="${template.contents}"/>
+    </target>
+    
+    <target name="compress-html">
+        <echo>Compressing HTML</echo>
+        
+        <!-- Compress to temp file -->
+        
+        <java jar="${htmlcompressor.jar}" fork="true" failonerror="true">
+            <arg line="--remove-quotes"/>
+            <arg line="-o ${index.build}.tmp ${index.build}"/>
+        </java>
+        
+        <!-- Replace build with compressed -->
+        
+        <copy file="${index.build}.tmp" tofile="${index.build}"/>
+    </target>
+    
+    <target name="optimize-require">
+        <echo>Optimizing Require.js Modules</echo>
+        
+        <!-- Get list of modules -->
+        
+        <exec executable="node" failonerror="true" outputproperty="js.rjs.modules">
+            <arg line="lib/backbone-spf/util/get_modules.js ${js.app.config}"/>
+        </exec>
+        <echo>Found modules: ${js.rjs.modules}</echo>
+        
+        <!-- Run optimization -->
+        
+        <exec executable="${r.js}" failonerror="true">
+            <arg line="-o baseUrl=./app"/>
+            <arg line="include=app,${js.rjs.modules}"/>
+            <arg line="excludeShallow=app"/>
+            <arg line="out=${js.rjs.target}"/>
+        </exec>
+    </target>
+    
+    <!-- Deployment targets -->
+    
+    <target name="deploy" depends="-deploy"/>
+    
+    <target name="deploy-full">
+        <property name="deploy.full" value="true"/>
+        <ant target="-deploy"/>
+    </target>
+            
+    <target name="-deploy"
+            depends="build-production,
+                     deploy-alexandria,
+                     build-dev"/>
+    
+    <target name="deploy-alexandria">
+        <property file="${config.dir}/build.secret.properties" />
+        <echo>Deploying to ${alexandria.server}</echo>
+        <ftp server="${alexandria.server}"
+                remotedir="${alexandria.path}"
+                userid="${alexandria.username}"
+                password="${alexandria.password}"
+                action="del"
+                verbose="yes">
+            <fileset dir="${target.dir}">
+                <include name="scripts-*"/>
+                <include name="styles-*"/>
+            </fileset>
+        </ftp>
+        <ftp server="${alexandria.server}"
+                remotedir="${alexandria.path}"
+                userid="${alexandria.username}"
+                password="${alexandria.password}"
+                verbose="yes">
+            <fileset dir="${target.dir}">
+                <include name="images/**" if="deploy.full"/>
+                <include name="lib/**" if="deploy.full"/>
+                <include name="LICENSE.txt" if="deploy.full"/>
+                <include name="${index.file}"/>
+                <include name="${js.concat}"/>
+                <include name="${css.concat}"/>
+            </fileset>
+        </ftp>
+    </target>
+    
+    <!-- Deploy to GitHub Pages -->
+    <!-- (This is deprecated - we're pushing to gap.alexandriaarchive.org now) -->
+    
+    <!-- define git macro 
+    <macrodef name="git">
+        <attribute name="command" />
+        <attribute name="dir" default="" />
+        <element name="args" optional="true" />
+        <sequential>
+            <echo message="git @{command}" />
+            <exec executable="${git.exe}" dir="@{dir}">
+                <arg value="@{command}" />
+                <args/>
+            </exec>
+        </sequential>
+    </macrodef>
+    -->
+    <target name="deploy-github">
+        <!-- Checkout pages branch -->
+        <git command="checkout">
+            <args>
+                <arg value="gh-pages"/>
+            </args>
+        </git>
+        <!-- Merge changes -->
+        <git command="merge">
+            <args>
+                <arg value="master"/>
+            </args>
+        </git>
+        <!-- Build production and commit -->
+        <ant target="build-production"/>
+        <git command="add">
+            <args>
+                <arg value="-f"/>
+                <arg value="index.html"/>
+                <arg value="${js.concat.target}"/>
+            </args>
+        </git>
+        <git command="commit">
+            <args>
+                <arg value="-m 'Latest production build'"/>
+            </args>
+        </git>
+        <git command="push">
+            <args>
+                <arg value="origin"/>
+                <arg value="gh-pages"/>
+            </args>
+        </git>
+        <git command="checkout">
+            <args>
+                <arg value="master"/>
+            </args>
+        </git>
+    </target>
+    
+    <!-- Dev Server targets -->
+    
+    <target name="start-proxy-server">
+        <exec executable="node">
+            <arg line="${devserver.js} -p ${dev.server.port} -t ${dev.target.proxytarget}" />
+        </exec>
+    </target>
+    
+    <target name="start-dev-server">
+        <exec executable="node">
+            <arg line="${devserver.js} -p ${dev.server.port} --testapi -T ./tests/api" />
+        </exec>
+    </target>
+    
+    <target name="launch-in-browser">
+        <exec executable="${command}">
+            <arg line="/K start http://localhost:${dev.server.port}/index.html" />
+        </exec>
+    </target>
+    
+    <target name="serve-proxy"
+            depends="build-dev,
+                     start-proxy-server,
+                     launch-in-browser" />
+    
+    <target name="serve-dev"
+            depends="build-dev,
+                     start-dev-server,
+                     launch-in-browser" />
+                     
+    <target name="serve-production"
+            depends="build-production-test,
+                     start-dev-server,
+                     launch-in-browser" />
+    
+    <!-- Test targets -->
+    
+    <target name="run-tests-dev"
+            depends="build-dev, 
+                     start-dev-server,
+                     run-tests"/>
+                     
+    <target name="run-tests-production"
+            depends="build-production-test, 
+                     start-dev-server,
+                     run-tests"/>
+    
+    <target name="run-tests">
+        <echo>Running tests</echo>
+        <property name="suite" value="tests/suites"/>
+        <!-- exec executable="python" failonerror="true" -->
+        <exec executable="casperjs" failonerror="true">
+            <arg value="test" />
+            <arg value="--includes=tests/commons.js" />
+            <arg file="tests/suites/" />
+        </exec>
+    </target>
+    
+</project>
