@@ -13,3 +13,13 @@ It is composed of the following pieces of software and data:
 3) Annotation data produced by students in Marie-Claire Beaulieu's Mythology classes at Tufts University in fall 2014 and 2015
 
 4) Pleaides Gazetteer data from http://pleiades.stoa.org/
+
+To Deploy this code you need:
+
+1) An Apache 2.2 Web Server running mod_wsgi
+
+External Dependencies
+
+1) A CTS 5 Endpoint serving Smiths' "Dictionary of Greek and Roman Geography" via urn:cts:pdlrefwk:viaf88890045.003.perseus-eng1. As of the time of publication, the source for that text
+could be found in the https://github.com/PerseusDL/canonical-pdlrefwk repository.
+
