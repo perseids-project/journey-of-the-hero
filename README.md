@@ -1,5 +1,11 @@
 This is a frozen copy of the Perseids Journey of the Hero Prototype Code.
 
+The workflow used to produce the data and prototype are described in 
+
+https://github.com/perseids-project/perseids_docs/issues/329
+https://github.com/perseids-project/perseids_docs/issues/295
+https://github.com/perseids-project/perseids_docs/issues/212
+
 # Components
 
 1) GapVis, originally developed by the Nick Rabinowitz / Google Ancient Places Project and enhanced by Thibault Clerice and Bridget Almas for the Perseids Project, Tufts University.
@@ -14,7 +20,7 @@ This is a frozen copy of the Perseids Journey of the Hero Prototype Code.
 
 4) Pleaides Gazetteer data from http://pleiades.stoa.org/
 
-# Prerequisists
+# Prerequisites
 
 1) An Apache 2.2 Web Server running mod_wsgi
 
