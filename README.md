@@ -1,6 +1,6 @@
 This is a frozen copy of the Perseids Journey of the Hero Prototype Code.
 
-It is composed of the following pieces of software and data:
+# Components
 
 1) GapVis, originally developed by the Nick Rabinowitz / Google Ancient Places Project and enhanced by Thibault Clerice and Bridget Almas for the Perseids Project, Tufts University.
    The original code is in https://github.com/enridaga/gapvis
@@ -14,12 +14,16 @@ It is composed of the following pieces of software and data:
 
 4) Pleaides Gazetteer data from http://pleiades.stoa.org/
 
-To Deploy this code you need:
+# Prerequisists
 
 1) An Apache 2.2 Web Server running mod_wsgi
 
-External Dependencies
+# External Service Dependencies
 
 1) A CTS 5 Endpoint serving Smiths' "Dictionary of Greek and Roman Geography" via urn:cts:pdlrefwk:viaf88890045.003.perseus-eng1. As of the time of publication, the source for that text
 could be found in the https://github.com/PerseusDL/canonical-pdlrefwk repository.
+
+# Deployment Instructions
+
+Described via the Puppet manifests in the puppet directory of this repo.
 

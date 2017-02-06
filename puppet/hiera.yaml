@@ -1,0 +1,6 @@
+---
+  joth::deploy_path: '/usr/local/joth'
+  joth::source_repo: 'https://github.com/perseids-project/journey-of-the-hero'
+  joth::vhost: 'joth.perseids.org'
+  joth::cts_api: "http://%{hiera('capitains::domain')}/api/cts/"
+  joth::pca_path: 'pca'
