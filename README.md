@@ -1,3 +1,6 @@
+
+[![DOI](https://zenodo.org/badge/81114857.svg)](https://zenodo.org/badge/latestdoi/81114857)
+
 This is a frozen copy of the Perseids Journey of the Hero Prototype Code.
 
 The workflow used to produce the data and prototype are described in 
