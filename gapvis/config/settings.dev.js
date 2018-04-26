@@ -8,8 +8,8 @@ REPORT_URL = 'tests/api/flags/';
 // REPORT_BAD_TOKEN_URL = null;
 // //if present and not null, makes a direct link isntead of a form. Looks for {place-id}
 //REPORT_PROBLEM_PLACE_URL = 'http://gap2.alexandriaarchive.org/report/place-issues/{place-id}';
-API_ROOT = '<URL TO PERSEIDS-CLIENT-APPS INSTANCE SERVING THE JOTH and PLEIADES DATA>'
-CTS_API  = '<URL TO A CTS 5 API ENDPOINT SERVING SMITHS>'
+API_ROOT = 'http://localhost:5000'
+CTS_API  = 'https://cts.perseids.org/api/cts/'
 API_DATA_TYPE = 'xml';
 DEBUG = false;
 DEEP_DEBUG = false;
