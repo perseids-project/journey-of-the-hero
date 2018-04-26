@@ -1,0 +1,18 @@
+version: '3'
+services:
+  perseids-client-apps:
+    build: ./perseids-client-apps
+    ports:
+      - 5000:5000
+    volumes:
+      - ./perseids-client-apps:/app
+      - ./data/joth:/app/joth/data
+      - ./data/pleiades-geojson/geojson:/app/joth/pleiades
+  gapvis:
+    image: halverneus/static-file-server
+    volumes:
+      - ./gapvis:/web
+    ports:
+      - 5001:5001
+    environment:
+      - PORT=5001

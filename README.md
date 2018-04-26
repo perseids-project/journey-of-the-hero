@@ -5,11 +5,11 @@ This is a frozen copy of the Perseids Journey of the Hero Prototype Code.
 
 The workflow used to produce the data and prototype are described in 
 
-https://github.com/perseids-project/perseids_docs/issues/329
+https://github.com/perseids-project/perseids\_docs/issues/329
 
-https://github.com/perseids-project/perseids_docs/issues/295
+https://github.com/perseids-project/perseids\_docs/issues/295
 
-https://github.com/perseids-project/perseids_docs/issues/212
+https://github.com/perseids-project/perseids\_docs/issues/212
 
 # Components
 
@@ -25,9 +25,16 @@ https://github.com/perseids-project/perseids_docs/issues/212
 
 4) Pleaides Gazetteer data from http://pleiades.stoa.org/
 
+# Running with Docker and Docker Compose
+
+* `bash -c "cd data/ && tar xfz data.tgz"`
+* `docker-compose build`
+* `docker-compose up`
+* Visit `http://localhost:5001/joth.html#index`
+
 # Prerequisites
 
-1) An Apache 2.2 Web Server running mod_wsgi
+1) An Apache 2.2 Web Server running mod\_wsgi
 
 # External Service Dependencies
 
