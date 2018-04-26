@@ -20,7 +20,7 @@ define(['gv', 'views/BookView'], function(gv, BookView) {
             // get the place
             place = book.places.get(placeId);
 
-            console.log("PlaceReferenceView" , place)
+            if (DEBUG) console.log("PlaceReferenceView" , place)
             place.ready(function() {
                 view.$el.append('<h4>No. of References by Book and Chapter</h4>');
 				if(book.supportsSections()){

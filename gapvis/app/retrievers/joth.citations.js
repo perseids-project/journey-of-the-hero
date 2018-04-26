@@ -141,7 +141,7 @@ define(["util/SparrowBuffer", "util/addAnnotator"], function(SparrowBuffer, addA
                                 })
                                 }
                                 } catch(e) {
-                                  console.log(e);
+                                  if (DEBUG) console.log(e);
                                 }
                                 callback();
                             },

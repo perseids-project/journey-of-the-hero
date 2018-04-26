@@ -26,7 +26,7 @@ define(['gv', 'views/BookView'], function(gv, BookView) {
             // fill in template
             
             var context = view.model.toJSON();
-            console.log("Control : ", context)
+            if (DEBUG) console.log("Control : ", context)
             context.showtext = !!state.get('pagehastext');
             context.showimage = !!state.get('pagehasimage');
             view.renderTemplate(context);

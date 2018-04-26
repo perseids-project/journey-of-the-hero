@@ -32,7 +32,7 @@ function( gv, BookView, slide ) {
                       $.ajax({
                         url: "http://services.perseids.org/cite_mapper/find_cite?cite=" + urn
                       }).done(function (data) {
-                         console.log(data);
+                         if (DEBUG) console.log(data);
                          if (data.author && data.work)  {
                              if (data.edition) {
                                  data.edition = "(" + data.edition + ")";
@@ -81,10 +81,10 @@ function( gv, BookView, slide ) {
               citations.map(function(citation) { 
                 if (citation.text) {
                   citation.text = citation.text.replace(citation.sourceSelector.current, "<b>" + citation.sourceSelector.current + "</b>")
-                  console.log(citation);
+                  if (DEBUG) console.log(citation);
                 } else { 
-                  console.log(citation);
-                   citation.text = "Unable to retrieve " + citation.urn;
+                  if (DEBUG) console.log(citation);
+                  citation.text = "Unable to retrieve " + citation.urn;
                 }
                 return citation;
               });
