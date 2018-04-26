@@ -15,7 +15,7 @@ define(function() {
                 var completeCollection = model[parameters.collection];
 
                 if(typeof page !== "undefined" && page !== undefined) {
-                    console.log("filtering collection on", page)
+                    if (DEBUG) console.log("filtering collection on", page)
                     var persons = model.pages.get(page).get(parameters.collection);
                     collection = _.map(persons, function(person) { return collection.get(person); })
                 }
@@ -48,11 +48,11 @@ define(function() {
                     if (n.length > 1) {
                       n = n[1].replace("#this", "").replace("-", "_");
                       n1 = "urn:cts:pdlrefwk:viaf88890045.003.perseus-eng1:" + n[0].toUpperCase() + "." + n.toLowerCase();
-                      console.log("good node " + n)
+                      if (DEBUG) console.log("good node " + n)
                     } else {
                       n = n[0].trim() + "_1";
                       n1 = "urn:cts:pdlrefwk:viaf88890045.003.perseus-eng1:" + n[0].toUpperCase() + "." + n.toLowerCase();
-                      console.log("Bod Node " + n);
+                      if (DEBUG) console.log("Bod Node " + n);
                     }   
                     if(model.pages.get(n1)) {
                       node.link = n1;
