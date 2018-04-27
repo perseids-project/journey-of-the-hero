@@ -32,6 +32,13 @@ https://github.com/perseids-project/perseids\_docs/issues/212
 * `docker-compose up`
 * Visit `http://localhost:5001/joth.html#index`
 
+## Google Maps API
+
+A Google Maps API key is required to get the maps to work (unless you're hosting the HTML on a domain that's been grandfathered in).
+To add an API key, first go [here](https://developers.google.com/maps/documentation/javascript/get-api-key) and get a key.
+Then replace `<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false">` with
+`<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY">` in `gapvis/joth.html` and `gapvis/myth.html`.
+
 # Prerequisites
 
 1) An Apache 2.2 Web Server running mod\_wsgi
